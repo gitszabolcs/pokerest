@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pókerest Szántóéknál</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Beszálló, vakok, visszaszállás, pénz: minden szabály egy helyen.">
+<meta name="theme-color" content="#4a0f1b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --felt:#4a0f1b;        /* oxblood felt */
+  --felt-deep:#2e0810;
+  --rail:#1a0d0a;        /* leather rail */
+  --stock:#f6f1e7;       /* card stock */
+  --ink:#171214;
+  --red:#b3122a;
+  --brass:#d4a640;
+  --chip-blue:#27458a;
+  --chip-black:#1d1b1c;
+  --chalk:#f3e9dc;       /* text on felt */
+  --chalk-dim:#cdb6ad;
+  --display:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --body:Figtree, system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--felt-deep)}
+body{
+  margin:0;color:var(--chalk);font:17px/1.6 var(--body);
+  background-color:var(--felt-deep);
+  background-image:
+    radial-gradient(120% 80% at 50% 0%, #6a1626 0%, var(--felt) 45%, var(--felt-deep) 100%);
+  min-height:100%;
+  position:relative;
+}
+/* felt grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+main{position:relative;max-width:760px;margin:0 auto;padding-block:0 64px;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+a{color:var(--brass)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+
+/* ---------- cards ---------- */
+.card{
+  --w:120px;
+  width:var(--w);aspect-ratio:5/7;border-radius:calc(var(--w)*.08);
+  background:var(--stock);color:var(--ink);position:relative;flex:none;
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 14px 30px rgba(0,0,0,.45), 0 2px 4px rgba(0,0,0,.35);
+  font-family:var(--display);
+}
+.card.r{color:var(--red)}
+.card .ix{position:absolute;left:8%;top:5%;line-height:.9;text-align:center;font-weight:800;font-size:calc(var(--w)*.22)}
+.card .ix i{display:block;font-style:normal;font-size:.75em}
+.card .ix.b{left:auto;top:auto;right:8%;bottom:5%;transform:rotate(180deg)}
+.card .pip{position:absolute;inset:0;display:grid;place-items:center;font-size:calc(var(--w)*.5)}
+
+/* ---------- hero ---------- */
+.hero{padding:40px 0 24px;display:grid;gap:28px;justify-items:center;text-align:center}
+.deal{display:flex;justify-content:center;height:250px;align-items:center;padding-top:20px}
+.deal .card{--w:150px}
+.deal .c1{transform:rotate(-9deg) translateX(18px)}
+.deal .c2{transform:rotate(7deg) translateX(-18px) translateY(10px)}
+@media (prefers-reduced-motion:no-preference){
+  .deal .card{animation:deal .7s cubic-bezier(.2,.8,.25,1) both}
+  .deal .c2{animation-delay:.18s}
+  @keyframes deal{from{transform:translate(0,-700px) rotate(-40deg);opacity:0}}
+}
+h1{
+  font-family:var(--display);font-weight:900;text-transform:uppercase;
+  font-size:clamp(54px,15vw,112px);line-height:.86;letter-spacing:.005em;margin:0;
+  color:var(--chalk);text-shadow:0 3px 0 var(--felt-deep);
+}
+h1 small{display:block;font-size:.5em;font-weight:600;letter-spacing:.04em;color:var(--brass);text-shadow:none;margin-top:.18em}
+.joke{margin:0;max-width:30ch;color:var(--chalk-dim);font-size:16px}
+
+/* when / where */
+.when{
+  width:100%;margin-top:8px;display:grid;grid-template-columns:repeat(2,1fr);
+  border-top:1px solid rgba(212,166,64,.45);border-bottom:1px solid rgba(212,166,64,.45);
+}
+.when div{padding:16px 8px;text-align:center}
+.when div + div{border-left:1px solid rgba(212,166,64,.25)}
+.when b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(26px,7vw,38px);line-height:1;color:var(--stock)}
+.when span{font-size:14px;color:var(--chalk-dim)}
+.when em{display:block;font-style:normal;font-size:13px;color:var(--brass)}
+.where{margin:0;color:var(--chalk-dim);font-size:15px}
+
+/* ---------- sections ---------- */
+section{margin-top:64px}
+h2{
+  font-family:var(--display);font-weight:800;font-size:clamp(36px,9vw,52px);line-height:1;margin:0 0 20px;
+  display:flex;align-items:center;gap:14px;color:var(--stock);
+}
+h2 .s{font-size:.6em;color:var(--brass)}
+p{margin:0 0 14px;max-width:62ch}
+.lead{font-size:19px;color:var(--stock)}
+.dim{color:var(--chalk-dim)}
+ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+ul.plain li{padding-left:28px;position:relative;max-width:60ch}
+ul.plain li::before{
+  content:"";position:absolute;left:0;top:.42em;width:14px;height:14px;border-radius:50%;
+  background:repeating-conic-gradient(var(--brass) 0 30deg, var(--felt-deep) 30deg 60deg);
+  box-shadow:0 0 0 2px var(--brass);
+}
+strong{color:var(--stock);font-weight:700}
+
+/* ---------- chips ---------- */
+.chips{display:flex;gap:clamp(10px,4vw,36px);justify-content:center;margin:8px 0 28px}
+.chipwrap{display:grid;justify-items:center;gap:10px;text-align:center}
+.chip{
+  --c:var(--chip-blue);--size:min(25vw,128px);
+  width:var(--size);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:
+    radial-gradient(circle, var(--c) 0 56%, var(--stock) 56% 58.5%, var(--c) 58.5% 66%, transparent 66.5%),
+    repeating-conic-gradient(var(--c) 0 22.5deg, var(--stock) 22.5deg 45deg);
+  box-shadow:0 0 0 3px rgba(0,0,0,.25), 0 10px 22px rgba(0,0,0,.45);
+}
+.chip b{font-family:var(--display);font-weight:900;font-size:calc(var(--size)*.3);line-height:.9;color:var(--stock)}
+.chip b small{display:block;font-size:.42em;font-weight:600;letter-spacing:.05em}
+.chip.brass{--c:#b07d1e}
+.chip.black{--c:var(--chip-black)}
+.chipwrap span{font-size:15px;color:var(--chalk-dim)}
+
+/* ---------- rebuy stacks ---------- */
+.stacks{
+  margin:28px 0 8px;padding:22px 16px 14px;border-radius:18px;
+  background:rgba(0,0,0,.22);box-shadow:inset 0 0 0 1px rgba(212,166,64,.22);
+}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);align-items:end;gap:10px;height:190px;position:relative}
+.cap{position:absolute;left:0;right:0;border-top:2px dashed var(--brass);bottom:calc(150px + 0px)}
+.cap span{position:absolute;right:0;top:-24px;font-size:13px;color:var(--brass)}
+.col{justify-self:center;width:min(56px,100%);
+  background:repeating-linear-gradient(to top, var(--c,#27458a) 0 9px, var(--stock) 9px 10px);
+  border-radius:6px 6px 3px 3px;box-shadow:0 6px 12px rgba(0,0,0,.4)}
+.col.a{height:50px;--c:#27458a}
+.col.b{height:150px;--c:#b07d1e}
+.col.c{height:80px;--c:var(--chip-black)}
+.col.you{height:150px;background:none;border:2px dashed var(--chalk-dim);box-shadow:none;display:grid;place-items:center;
+  color:var(--chalk-dim);font-family:var(--display);font-weight:800;font-size:26px}
+.names{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;text-align:center;font-size:13px;color:var(--chalk-dim)}
+.names .hi{color:var(--stock)}
+
+/* ---------- note ---------- */
+.tbc{display:inline-block;font-size:13px;color:var(--brass);border:1px solid var(--brass);border-radius:999px;padding:0 10px;margin-left:4px}
+
+/* ---------- hand rankings ---------- */
+.ranks{list-style:none;margin:0;padding:0;display:grid}
+.ranks li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid rgba(243,233,220,.12)}
+.ranks li:first-child{border-top:0}
+.ranks .n{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.05;color:var(--stock)}
+.ranks .n small{display:block;font-family:var(--body);font-weight:400;font-size:13px;color:var(--chalk-dim)}
+.hand{display:flex;flex:none}
+.hand .card{--w:46px;box-shadow:0 3px 8px rgba(0,0,0,.4)}
+.hand .card + .card{margin-left:-8px}
+.hand .card .ix{font-size:13px;left:9%;top:6%}
+.hand .card .pip{font-size:16px;place-items:end center;padding-bottom:12%}
+.hand .card.dim{filter:brightness(.62)}
+@media (max-width:420px){
+  .hand .card{--w:32px}
+  .hand .card .ix{font-size:11px}
+  .hand .card .pip{font-size:13px}
+  .ranks .n{font-size:19px}
+}
+
+footer{margin-top:72px;text-align:center;color:var(--chalk-dim);font-size:15px}
+footer b{display:block;font-family:var(--display);font-weight:900;font-size:44px;color:var(--brass);line-height:1}
+</style>
+</head>
+<body>
+<main lang="hu">
+
+  <header class="hero">
+    <div class="deal" aria-hidden="true">
+      <div class="card c1"><div class="ix">A<i>♠</i></div><div class="pip">♠</div><div class="ix b">A<i>♠</i></div></div>
+      <div class="card r c2"><div class="ix">A<i>♥</i></div><div class="pip">♥</div><div class="ix b">A<i>♥</i></div></div>
+    </div>
+    <h1>Pókerest<small>Szántóéknál</small></h1>
+    <p class="joke">Baráti cash game. Kis pénz, a játék és a szórakozás a lényeg.</p>
+
+    <div class="when">
+      <div><b>18:00</b><span>kezdés</span></div>
+      <div><b>1:00</b><span>vége, nincs alku</span></div>
+    </div>
+    <p class="where">Szabolcs irodájában.</p>
+  </header>
+
+  <section aria-labelledby="t-tet">
+    <h2 id="t-tet"><span class="s">♠</span>A tét</h2>
+    <div class="chips">
+      <div class="chipwrap"><div class="chip brass"><b>20<small>LEJ</small></b></div><span>beszálló</span></div>
+      <div class="chipwrap"><div class="chip"><b>0,5<small>LEJ</small></b></div><span>kis vak</span></div>
+      <div class="chipwrap"><div class="chip black"><b>1<small>LEJ</small></b></div><span>nagy vak</span></div>
+    </div>
+    <ul class="plain">
+      <li><strong>Cash game, nem verseny.</strong> A 20 lejes beszállóért zsetont kapsz, és azzal játszol.</li>
+      <li>A vakok <strong>egész este ugyanazok</strong>, nem nőnek.</li>
+      <li>Nincs gondolkodási időkorlát. Kis pénzről van szó, a játék és a szórakozás a lényeg.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t-rebuy">
+    <h2 id="t-rebuy"><span class="s" style="color:var(--red)">♥</span>Visszaszállás</h2>
+    <p class="lead">Ha elfogy a zsetonod, visszaszállhatsz. Akárhányszor.</p>
+    <p>Egyszerre viszont legfeljebb annyival, <strong>amennyi a legnagyobb stack az asztalon</strong>. Így senki nem ül be 200 lejjel, hogy mindenkit kinyomjon. Végig legyen esély mindenkinek.</p>
+    <figure class="stacks" aria-label="Példa: a visszaszállás legfeljebb akkora lehet, mint a legnagyobb stack.">
+      <div class="cols">
+        <div class="cap"><span>eddig szállhatsz vissza</span></div>
+        <div class="col a"></div>
+        <div class="col b"></div>
+        <div class="col c"></div>
+        <div class="col you">?</div>
+      </div>
+      <div class="names"><span>ő</span><span class="hi">legnagyobb stack</span><span>ő</span><span class="hi">te, újra</span></div>
+    </figure>
+  </section>
+
+  <section aria-labelledby="t-ki">
+    <h2 id="t-ki"><span class="s">♣</span>Kiszállás</h2>
+    <ul class="plain">
+      <li><strong>Bármikor abbahagyhatod.</strong> Megszámoljuk a zsetonjaidat, és viszed, ami a tiéd.</li>
+      <li>Aki kiszállt, aznap este már nem ül vissza.</li>
+      <li><strong>Egykor vége</strong>, akárhogy áll a játék. Öregek vagyunk, és reggel a gyerek ébreszt.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t-penz">
+    <h2 id="t-penz"><span class="s" style="color:var(--red)">♦</span>Pénz és sör</h2>
+    <ul class="plain">
+      <li><strong>Hozz készpénzt</strong>, lehetőleg tízlejeseket. Múltkor az utalások nem mentek jól ittasan.</li>
+      <li><strong>Italpénz: 20 lej fejenként.</strong> Ebből lesz egy láda sör, ropi és pár kóla.</li>
+      <li>Ami megmarad, a <strong>kasszába</strong> megy, a következő estékre vagy pókerkellékekre.</li>
+      <li>Szabolcs trabucot rendel. Ha kérsz, szólj neki.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t-ranks">
+    <h2 id="t-ranks"><span class="s">♠</span>Mi üt mit?</h2>
+    <p class="dim">Fentről lefelé gyengülnek. A szürke lapok nem számítanak bele a kézbe.</p>
+    <ol class="ranks">
+      <li><span class="n">Royal flush<small>tíztől ászig, egy színben</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">10</span><span class="pip">♠</span></span><span class="card"><span class="ix">J</span><span class="pip">♠</span></span><span class="card"><span class="ix">Q</span><span class="pip">♠</span></span><span class="card"><span class="ix">K</span><span class="pip">♠</span></span><span class="card"><span class="ix">A</span><span class="pip">♠</span></span>
+        </span></li>
+      <li><span class="n">Színsor<small>öt egymást követő, egy színben</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card r"><span class="ix">5</span><span class="pip">♥</span></span><span class="card r"><span class="ix">6</span><span class="pip">♥</span></span><span class="card r"><span class="ix">7</span><span class="pip">♥</span></span><span class="card r"><span class="ix">8</span><span class="pip">♥</span></span><span class="card r"><span class="ix">9</span><span class="pip">♥</span></span>
+        </span></li>
+      <li><span class="n">Póker<small>négy egyforma</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">Q</span><span class="pip">♠</span></span><span class="card r"><span class="ix">Q</span><span class="pip">♥</span></span><span class="card r"><span class="ix">Q</span><span class="pip">♦</span></span><span class="card"><span class="ix">Q</span><span class="pip">♣</span></span><span class="card dim"><span class="ix">4</span><span class="pip">♠</span></span>
+        </span></li>
+      <li><span class="n">Full house<small>drill és egy pár</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">J</span><span class="pip">♣</span></span><span class="card r"><span class="ix">J</span><span class="pip">♦</span></span><span class="card"><span class="ix">J</span><span class="pip">♠</span></span><span class="card r"><span class="ix">8</span><span class="pip">♥</span></span><span class="card"><span class="ix">8</span><span class="pip">♣</span></span>
+        </span></li>
+      <li><span class="n">Flush<small>öt lap egy színben</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">K</span><span class="pip">♣</span></span><span class="card"><span class="ix">10</span><span class="pip">♣</span></span><span class="card"><span class="ix">7</span><span class="pip">♣</span></span><span class="card"><span class="ix">4</span><span class="pip">♣</span></span><span class="card"><span class="ix">2</span><span class="pip">♣</span></span>
+        </span></li>
+      <li><span class="n">Sor<small>öt egymást követő</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">4</span><span class="pip">♠</span></span><span class="card"><span class="ix">5</span><span class="pip">♣</span></span><span class="card r"><span class="ix">6</span><span class="pip">♥</span></span><span class="card"><span class="ix">7</span><span class="pip">♠</span></span><span class="card r"><span class="ix">8</span><span class="pip">♦</span></span>
+        </span></li>
+      <li><span class="n">Drill<small>három egyforma</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">7</span><span class="pip">♠</span></span><span class="card r"><span class="ix">7</span><span class="pip">♥</span></span><span class="card"><span class="ix">7</span><span class="pip">♣</span></span><span class="card r dim"><span class="ix">K</span><span class="pip">♦</span></span><span class="card dim"><span class="ix">2</span><span class="pip">♠</span></span>
+        </span></li>
+      <li><span class="n">Két pár</span>
+        <span class="hand" aria-hidden="true">
+          <span class="card r"><span class="ix">A</span><span class="pip">♥</span></span><span class="card"><span class="ix">A</span><span class="pip">♣</span></span><span class="card"><span class="ix">9</span><span class="pip">♠</span></span><span class="card r"><span class="ix">9</span><span class="pip">♦</span></span><span class="card dim"><span class="ix">5</span><span class="pip">♣</span></span>
+        </span></li>
+      <li><span class="n">Egy pár</span>
+        <span class="hand" aria-hidden="true">
+          <span class="card"><span class="ix">10</span><span class="pip">♠</span></span><span class="card r"><span class="ix">10</span><span class="pip">♥</span></span><span class="card dim"><span class="ix">K</span><span class="pip">♣</span></span><span class="card dim"><span class="ix">6</span><span class="pip">♠</span></span><span class="card r dim"><span class="ix">3</span><span class="pip">♦</span></span>
+        </span></li>
+      <li><span class="n">Magas lap<small>ha senkinek nincs semmi</small></span>
+        <span class="hand" aria-hidden="true">
+          <span class="card r"><span class="ix">A</span><span class="pip">♦</span></span><span class="card dim"><span class="ix">J</span><span class="pip">♣</span></span><span class="card dim"><span class="ix">8</span><span class="pip">♠</span></span><span class="card r dim"><span class="ix">5</span><span class="pip">♥</span></span><span class="card dim"><span class="ix">3</span><span class="pip">♣</span></span>
+        </span></li>
+    </ol>
+  </section>
+
+  <footer>
+    <b>♠ ♥ ♣ ♦</b>
+    <p>A rendszer még alakul. Ötletet szívesen fogadunk.</p>
+  </footer>
+</main>
+</body>
+</html>
